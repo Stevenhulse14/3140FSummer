@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fight History Explorer | JavaScript Classroom Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Page Header -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="demo-label">JavaScript Classroom Demo</p>
+      <h1>Fight History Explorer</h1>
+      <p class="subtitle">
+        HTML builds the structure. CSS styles the page.
+        JavaScript stores fighter data, calculates statistics, and updates the interface.
+      </p>
+    </div>
+  </header>
+
+  <nav class="controls-bar" aria-label="Explorer controls">
+    <div class="control-group">
+      <label for="fighter-select">Select Fighter</label>
+      <select id="fighter-select"></select>
+    </div>
+
+    <div class="control-group">
+      <label for="sort-select">Sort Fight History</label>
+      <select id="sort-select">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="fastest">Fastest Finish</option>
+        <option value="latest-round">Latest Round</option>
+      </select>
+    </div>
+
+    <div class="control-actions">
+      <button id="demo-fight-button" type="button">
+        Add Demonstration Fight
+      </button>
+      <button id="teaching-notes-button" type="button" aria-expanded="false" aria-controls="teaching-notes">
+        Show Teaching Notes
+      </button>
+    </div>
+  </nav>
+
+  <aside id="teaching-notes" class="teaching-notes" hidden>
+    <h2>Teaching Notes</h2>
+    <p>
+      The HTML provides the page structure.
+    </p>
+    <p>
+      The CSS controls the appearance.
+    </p>
+    <p>
+      The JavaScript stores fighter data, calculates statistics, filters fights,
+      responds to clicks, and updates the webpage.
+    </p>
+  </aside>
+
+  <p id="status-message" class="status-message" aria-live="polite"></p>
+
+  <main>
+    <!-- Fighter Profile -->
+    <section class="profile-section" aria-labelledby="profile-heading">
+      <h2 id="profile-heading" class="visually-hidden">Fighter Profile</h2>
+
+      <article class="profile-card">
+        <div class="fighter-image" id="fighter-image" aria-hidden="true">
+          <span id="fighter-initials" class="fighter-initials">MK</span>
+        </div>
+
+        <div class="profile-content">
+          <p class="nickname" id="fighter-nickname">The Hammer</p>
+          <h3 id="fighter-name">Marcus King</h3>
+          <p id="fighter-weight-class">Lightweight</p>
+          <p id="fighter-style">Boxing / Wrestling</p>
+          <p id="fighter-hometown">Brooklyn, New York</p>
+          <p class="record" id="fighter-record">Record: 0-0-0</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Career Statistics -->
+    <section class="stats-section" aria-labelledby="stats-heading">
+      <h2 id="stats-heading">Career Statistics</h2>
+      <div class="stats-grid" id="stats-grid">
+        <!-- Statistics are rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Recent Form -->
+    <section class="form-section" aria-labelledby="form-heading">
+      <h2 id="form-heading">Recent Form</h2>
+      <p class="section-note">Most recent five fight results</p>
+      <div class="recent-form" id="recent-form" aria-live="polite">
+        <!-- Recent form badges are rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Fight History -->
+    <section class="history-section" aria-labelledby="history-heading">
+      <div class="history-header">
+        <h2 id="history-heading">Fight History</h2>
+        <p id="results-count" aria-live="polite"></p>
+      </div>
+
+      <div class="filter-controls" role="group" aria-label="Filter fight history">
+        <button type="button" class="filter-button is-active" data-filter="all">
+          All Fights
+        </button>
+        <button type="button" class="filter-button" data-filter="wins">
+          Wins
+        </button>
+        <button type="button" class="filter-button" data-filter="losses">
+          Losses
+        </button>
+        <button type="button" class="filter-button" data-filter="knockouts">
+          Knockouts
+        </button>
+        <button type="button" class="filter-button" data-filter="submissions">
+          Submissions
+        </button>
+        <button type="button" class="filter-button" data-filter="decisions">
+          Decisions
+        </button>
+      </div>
+
+      <div class="history-layout">
+        <div id="fight-list" class="fight-list" aria-live="polite">
+          <!-- Fight cards are created by JavaScript -->
+        </div>
+
+        <aside
+          id="fight-details"
+          class="fight-details"
+          aria-labelledby="details-heading"
+          hidden
+        >
+          <div class="fight-details__header">
+            <h2 id="details-heading">Fight Details</h2>
+            <button id="close-details-button" type="button" aria-label="Close fight details">
+              Close
+            </button>
+          </div>
+          <div id="fight-details-content" class="fight-details__content">
+            <!-- Selected fight details are rendered by JavaScript -->
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Fight History Explorer — fictional fighters and events for classroom use only.
+      Not affiliated with any professional combat sports organization.
+    </p>
+  </footer>
+</body>
+</html>
