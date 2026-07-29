@@ -1,3 +1,7 @@
+import obj from "./helper.js";
+let { newArr, transpose, dia } = obj;
+
+console.log("LOOK IM RIGHT HERE ", newArr, transpose());
 const player1 = "X";
 const player2 = "O";
 let count = 0;
