@@ -7,7 +7,7 @@ let matrix = [
   ["X", "H", "O"],
 ];
 // this evalutes our rows
-const newArr = matrix.map((subarr) => subarr.join(""));
+const getRows = (m) => m.map((subarr) => subarr);
 
 // turn our rows into columns
 function transpose(m) {
@@ -21,7 +21,6 @@ function transpose(m) {
   return newMatrix;
 }
 
-console.log(transpose(matrix));
 //something to evaluate those strings
 
 // Dia
@@ -31,6 +30,23 @@ const dia = (m) => [
   [m[0][2], m[1][1], m[2][0]],
 ];
 
-export default { newArr, transpose, dia };
+function checker(arr) {
+  // Matrix => str with these higher order functions, tell me if there is a winner and who that winner is
+  return arr
+    .map((item) => item.join(""))
+    .filter((str) => (str === "XXX" ? "XXX" : str === "OOO" ? "OOO" : null))[0];
+}
+
+// console.log(
+//   "DATA",
+//   "Rows:",
+//   checker(newArr),
+//   "Diagnols :",
+//   checker(dia(matrix)),
+//   "Columns: ",
+//   checker(transpose(matrix)),
+// );
+
+export default { getRows, transpose, dia, checker };
 
 // How to Transpose our matrix

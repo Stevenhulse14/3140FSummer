@@ -1,7 +1,7 @@
 import obj from "./helper.js";
-let { newArr, transpose, dia } = obj;
+let { newArr, transpose, dia, checker } = obj;
 
-console.log("LOOK IM RIGHT HERE ", newArr, transpose());
+//console.log("LOOK IM RIGHT HERE ", newArr, transpose());
 const player1 = "X";
 const player2 = "O";
 let count = 0;
@@ -18,13 +18,15 @@ let table = document.addEventListener("click", (e) => {
   //console.log(e.target);
 
   // is something
+  let selection = e.target.innerHTML;
   let newarr = e.target.className.split("");
   console.log(typeof +newarr[0], newarr[1]);
   let indexone = +newarr[0];
   let indextwo = +newarr[1];
-  if (count % 2 === 0) {
+
+  if (count % 2 === 0 && selection === "") {
     e.target.innerHTML = player1;
-  } else {
+  } else if (count % 2 === 1 && selection === "") {
     e.target.innerHTML = player2;
   }
   state[indexone][indextwo] = count % 2 === 0 ? player1 : player2;
